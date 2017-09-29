@@ -62,6 +62,6 @@ public static class Program
             .Append(Transforms.HtmlEncode)
             .Append(Transforms.Utf8Encode)
             .Append(Transforms.BitwiseInvert);
-        var /* byte[] */ output2 = pipelineTranform1.Transform(u"ABCDEF&abcdef");
+        var /* byte[] */ output2 = pipelineTranform2.Transform(u"ABCDEF&abcdef");
     }
 }
