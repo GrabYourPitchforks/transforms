@@ -5,9 +5,7 @@ using System.Text;
 
 namespace Transforms
 {
-    [StructLayout(LayoutKind.Sequential, Size = 1)]
-    public struct Utf8Char
+    public enum Utf8Char : byte
     {
-        private byte Value;
     }
 }
