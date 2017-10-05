@@ -27,9 +27,9 @@ namespace Transforms
         /// <returns>The maximum possible number of output elements.</returns>
         /// <remarks>
         /// This method throws an exception if <paramref name="numInputElements"/> is negative or if the maximum
-        /// output element count is greater than <see cref="Int32.MaxValue"/>.
+        /// output element count is greater than <see cref="long.MaxValue"/>.
         /// </remarks>
-        int GetMaxOutputElementCount(int numInputElements);
+        long GetMaxOutputElementCount(long numInputElements);
 
         /// <summary>
         /// Transforms data from one representation to another.
@@ -60,6 +60,6 @@ namespace Transforms
         /// <returns><see langword="true"/> if the number of output elements was calculated successfully.
         /// <see langword="false"/> if the the data provided by <paramref name="input"/> was invalid or if
         /// the number of output elements could not be successfully calculated.</returns>
-        bool TryGetTransformedElementCount(ReadOnlySpan<TIn> input, bool isFinalChunk, out int numOutputElements);
+        bool TryGetTransformedElementCount(ReadOnlySpan<TIn> input, bool isFinalChunk, out long numOutputElements);
     }
 }

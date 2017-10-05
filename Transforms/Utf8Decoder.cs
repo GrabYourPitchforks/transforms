@@ -8,7 +8,7 @@ namespace Transforms
     {
         public bool CanTransformInPlace => throw new NotImplementedException();
 
-        public int GetMaxOutputElementCount(int numInputElements)
+        public long GetMaxOutputElementCount(long numInputElements)
         {
             throw new NotImplementedException();
         }
@@ -25,7 +25,7 @@ namespace Transforms
             throw new NotImplementedException();
         }
 
-        public bool TryGetTransformedElementCount(ReadOnlySpan<byte> input, bool isFinalChunk, out int numOutputElements)
+        public bool TryGetTransformedElementCount(ReadOnlySpan<byte> input, bool isFinalChunk, out long numOutputElements)
         {
             throw new NotImplementedException();
         }

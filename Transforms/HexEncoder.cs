@@ -30,7 +30,7 @@ namespace Transforms
             return nibble + ((nibble < 10) ? '0' : addendWhenAlpha);
         }
 
-        public int GetMaxOutputElementCount(int numInputElements) => (int)checked((uint)numInputElements * 2);
+        public long GetMaxOutputElementCount(long numInputElements) => (long)checked((ulong)numInputElements * 2);
 
         [return: MustInspect]
         public TransformStatus Transform(ReadOnlySpan<byte> input, Span<char> output, bool isFinalChunk, out int numElementsConsumed, out int numElementsWritten)
@@ -57,7 +57,7 @@ namespace Transforms
 
             numElementsConsumed = elementsToConsumeCount;
             numElementsWritten = elementsToConsumeCount * 2;
-            return (numElementsConsumed == input.Length) ? TransformStatus.FullyCompleted : TransformStatus.PartiallyCompleted;
+            return (numElementsConsumed == input.Length) ? TransformStatus.FullyCompleted : TransformStatus.Incomplete;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -71,15 +71,10 @@ namespace Transforms
             }
         }
 
-        public bool TryGetTransformedElementCount(ReadOnlySpan<byte> input, bool isFinalChunk, out int numOutputElements)
+        public bool TryGetTransformedElementCount(ReadOnlySpan<byte> input, bool isFinalChunk, out long numOutputElements)
         {
-            // We can't report an output element count that overflows Int32.
-            // This is ok if this isn't the final chunk, since the caller will just invoke this method in a loop.
-            // If this is the final chunk, the caller expects us to give him an exact count, which we can't do.
-
-            long actualOutputCount = input.Length * 2 /* output elements per input element */;
-            numOutputElements = (int)Math.Min(actualOutputCount, Int32.MinValue);
-            return (!isFinalChunk || (numOutputElements == actualOutputCount));
+            numOutputElements = (long)input.Length * 2 /* output elements per input element */;
+            return true;
         }
     }
 }
