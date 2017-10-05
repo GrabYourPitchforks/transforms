@@ -13,17 +13,19 @@ namespace Transforms
             throw new NotImplementedException();
         }
 
+        [return: MustInspect]
+        public TransformStatus Transform(ReadOnlySpan<byte> input, Span<char> output, bool isFinalChunk, out int numElementsConsumed, out int numElementsWritten)
+        {
+            throw new NotImplementedException();
+        }
+
+        [return: MustInspect]
+        public TransformStatus Transform(ReadOnlySpan<byte> input, Span<Utf8Char> output, bool isFinalChunk, out int numElementsConsumed, out int numElementsWritten)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool TryGetTransformedElementCount(ReadOnlySpan<byte> input, bool isFinalChunk, out int numOutputElements)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool TryTransform(ReadOnlySpan<byte> input, Span<char> output, bool isFinalChunk, out int numElementsConsumed, out int numElementsWritten)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool TryTransform(ReadOnlySpan<byte> input, Span<Utf8Char> output, bool isFinalChunk, out int numElementsConsumed, out int numElementsWritten)
         {
             throw new NotImplementedException();
         }
