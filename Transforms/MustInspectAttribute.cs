@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Transforms
 {
@@ -13,7 +11,7 @@ namespace Transforms
     [AttributeUsage(AttributeTargets.ReturnValue, AllowMultiple = false, Inherited = true)]
     public sealed class MustInspectAttribute : Attribute
     {
-        private static readonly int HashCode = RuntimeHelpers.GetHashCode(new object());
+        private static readonly int HashCode = RuntimeHelpers.GetHashCode(new MustInspectAttribute());
         
         public override bool Equals(object obj) => (obj is MustInspectAttribute);
 
