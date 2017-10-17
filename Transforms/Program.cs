@@ -60,6 +60,7 @@ public static class Program
 
             // Copy transformed data to output.
 
+            availableInputData = availableInputData.Slice(numElementsConsumed);
             outputStream.Write(writeBuffer.Slice(0, numElementsWritten));
         }
 
